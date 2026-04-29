@@ -1,0 +1,71 @@
+---
+// Nav.astro — shared navigation
+// Lives in src/components/ui/Nav.astro
+// Included automatically by Layout.astro — you never import this manually.
+
+// You can pass the current page path to highlight the active link.
+// Astro.url.pathname gives you the current route, e.g. "/" or "/about"
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+    <div class="container">
+      <!-- Brand / your name -->
+      <a class="navbar-brand fw-semibold" href="/">
+        Your Name
+        <span class="text-muted fw-normal fs-6 ms-1">IT Portfolio</span>
+      </a>
+
+      <!-- Mobile toggle -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav links -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class={`nav-link ${currentPath === "/" ? "active" : ""}`}
+              aria-current={currentPath === "/" ? "page" : undefined}
+              href="/">Home</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class={`nav-link ${currentPath === "/about" ? "active" : ""}`}
+              href="/about">About</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class={`nav-link ${currentPath === "/projects" ? "active" : ""}`}
+              href="/projects">Projects</a
+            >
+          </li>
+
+          <!-- Resume opens as a PDF in a new tab -->
+          <li class="nav-item ms-lg-2">
+            <a
+              class="btn btn-outline-primary btn-sm"
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener">Resume ↗</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

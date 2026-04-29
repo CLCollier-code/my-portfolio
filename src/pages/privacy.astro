@@ -1,0 +1,36 @@
+---
+// src/pages/privacy.astro — flat content page
+//
+// Notice: no blocks array, no BlockRenderer.
+// Just wrap your HTML in <Layout> and it gets nav, footer,
+// head tags, and Bootstrap automatically.
+// This replaces your current standalone privacy HTML file.
+
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Privacy Policy"
+  description="Privacy policy for this portfolio site."
+>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="mb-4">Privacy Policy</h1>
+        <p class="text-muted mb-4">Last updated: 2025</p>
+
+        <p>
+          This portfolio website does not collect, store, or share any personal
+          data about its visitors. No cookies, no tracking scripts, no
+          analytics.
+        </p>
+
+        <h2 class="h5 mt-4 mb-2">Contact</h2>
+        <p>
+          If you have any questions, reach out via the contact form on the
+          homepage.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

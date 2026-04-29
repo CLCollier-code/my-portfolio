@@ -1,0 +1,45 @@
+---
+// BlockRenderer.astro — the dispatcher
+// Lives in src/components/blocks/BlockRenderer.astro
+//
+// This is the equivalent of your base.njk loop, but extracted into
+// its own file. Layout.astro calls this once per block in the CMS array.
+// To add a new block type: create the .astro file, import it here,
+// add one line to the switch below. Nothing else needs to change.
+
+// import Hero from "./Hero.astro";
+// import ProjectCard from "./ProjectCard.astro";
+// import SkillsGrid from "./SkillsGrid.astro";
+// import CertBadge from "./CertBadge.astro";
+
+// The shape of a block coming from Sveltia / your markdown frontmatter.
+// 'type' maps to the block component. Everything else is block-specific data.
+interface Props {
+  block: {
+    type: string;
+    [key: string]: unknown; // any other fields the block carries
+  };
+}
+
+const { block } = Astro.props;
+---
+
+<!--
+  One condition per block type.
+  Each component receives the full block object as 'data'
+  and destructures what it needs internally.
+--><!-- Block components coming soon  {
+  block.type === "hero" && <Hero data={block} />
+}
+{block.type === "projectCard" && <ProjectCard data={block} />}
+{block.type === "skillsGrid" && <SkillsGrid data={block} />}
+{block.type === "certBadge" && <CertBadge data={block} />}
+
+
+{
+  !["hero", "projectCard", "skillsGrid", "certBadge"].includes(block.type) && (
+    <div class="alert alert-warning m-3">
+      Unknown block type: <strong>{block.type}</strong>
+    </div>
+  )
+} -->

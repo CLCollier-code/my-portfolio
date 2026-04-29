@@ -1,0 +1,35 @@
+---
+import Nav from "../components/ui/Nav.astro";
+import Footer from "../components/ui/Footer.astro";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const {
+  title,
+  description = "IT portfolio of [Your Name] — systems, infrastructure, and web.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | Your Name — IT Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <Nav />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      is:inline></script>
+  </body>
+</html>

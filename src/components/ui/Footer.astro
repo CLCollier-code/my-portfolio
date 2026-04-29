@@ -1,0 +1,38 @@
+---
+// Footer.astro — shared footer
+// Lives in src/components/ui/Footer.astro
+// Included automatically by Layout.astro
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-top bg-body-tertiary mt-auto py-4">
+  <div
+    class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
+  >
+    <p class="mb-0 text-muted small">
+      &copy; {year} Your Name. Built with Astro & Bootstrap.
+    </p>
+
+    <nav aria-label="Footer navigation">
+      <ul class="list-inline mb-0 small">
+        <li class="list-inline-item">
+          <a href="/privacy" class="text-muted text-decoration-none">Privacy</a>
+        </li>
+        <li class="list-inline-item ms-2">
+          <a href="/accessibility" class="text-muted text-decoration-none"
+            >Accessibility</a
+          >
+        </li>
+        <li class="list-inline-item ms-2">
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener"
+            class="text-muted text-decoration-none">GitHub ↗</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</footer>
