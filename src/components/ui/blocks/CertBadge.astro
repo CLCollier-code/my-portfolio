@@ -1,0 +1,156 @@
+---
+// CertBadge.astro
+// Lives in src/components/blocks/CertBadge.astro
+// Displays certifications in a clean grid matching the portfolio aesthetic.
+
+const { data } = Astro.props
+const { heading, certs } = data
+---
+
+<section class="certifications py-5">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="section-header mb-5">
+      <p class="prompt mb-1">
+        <span class="prompt-user">chris@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+        <span class="prompt-cmd"> cat ./certifications.txt</span>
+      </p>
+      <h2 class="fw-bold">{heading}</h2>
+      <div class="header-line"></div>
+    </div>
+
+    <!-- Certs grid -->
+    <div class="row g-4">
+      {certs.map((cert) => (
+        <div class="col-sm-6 col-lg-4">
+          <div class="cert-card h-100 d-flex align-items-start gap-3">
+
+            <!-- Icon -->
+            <div class="cert-icon flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.745 3.745 0 013.296-1.043A3.745 3.745 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 013.296 1.043 3.745 3.745 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+              </svg>
+            </div>
+
+            <!-- Cert info -->
+            <div>
+              <h3 class="cert-name">{cert.name}</h3>
+              <p class="cert-meta">
+                <span class="cert-issuer">{cert.issuer}</span>
+                <span class="cert-sep"> · </span>
+                <span class="cert-year">{cert.year}</span>
+              </p>
+              <span class="cert-status">
+                <span class="status-dot"></span>
+                Verified
+              </span>
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .certifications {
+    background-color: #0f1117;
+    color: #e2e8f0;
+  }
+
+  /* Section header */
+  .section-header h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .header-line {
+    width: 48px;
+    height: 3px;
+    background: #68d391;
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+
+  /* Prompt line */
+  .prompt {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user  { color: #68d391; }
+  .prompt-sep   { color: #a0aec0; }
+  .prompt-path  { color: #63b3ed; }
+  .prompt-cmd   { color: #e2e8f0; }
+
+  /* Cert card */
+  .cert-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .cert-card:hover {
+    border-color: #68d391;
+    transform: translateY(-3px);
+  }
+
+  /* Icon */
+  .cert-icon {
+    color: #68d391;
+    margin-top: 2px;
+  }
+
+  /* Cert name */
+  .cert-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 4px;
+  }
+
+  /* Meta line */
+  .cert-meta {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    color: #a0aec0;
+    margin: 0 0 8px;
+  }
+
+  .cert-issuer { color: #90cdf4; }
+  .cert-sep    { color: #4a5568; }
+  .cert-year   { color: #a0aec0; }
+
+  /* Verified badge */
+  .cert-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #68d391;
+    background: rgba(104, 211, 145, 0.1);
+    border: 1px solid rgba(104, 211, 145, 0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #68d391;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+</style>

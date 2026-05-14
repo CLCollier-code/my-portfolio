@@ -1,0 +1,130 @@
+---
+// SkillsGrid.astro
+// Lives in src/components/blocks/SkillsGrid.astro
+// Displays skill categories as headers with badge pills underneath.
+// Matches the dark terminal aesthetic of the hero section.
+
+const { data } = Astro.props
+const { heading, skills } = data
+---
+
+<section class="skills-grid py-5">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="section-header mb-5">
+      <p class="prompt mb-1">
+        <span class="prompt-user">chris@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+        <span class="prompt-cmd"> ls ./skills</span>
+      </p>
+      <h2 class="fw-bold">{heading}</h2>
+      <div class="header-line"></div>
+    </div>
+
+    <!-- Skills grid -->
+    <div class="row g-4">
+      {skills.map((group) => (
+        <div class="col-sm-6 col-lg-3">
+          <div class="skill-card h-100">
+
+            <!-- Category header -->
+            <p class="category-label mb-3">
+              <span class="category-icon">▸</span>
+              {group.category}
+            </p>
+
+            <!-- Skill badges -->
+            <div class="d-flex flex-wrap gap-2">
+              {group.items.map((skill) => (
+                <span class="skill-badge">{skill}</span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    background-color: #0f1117;
+    color: #e2e8f0;
+    border-bottom: 1px solid #1e2533;
+  }
+
+  /* Section header */
+  .section-header h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .header-line {
+    width: 48px;
+    height: 3px;
+    background: #68d391;
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+
+  /* Prompt line — matches hero */
+  .prompt {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user  { color: #68d391; }
+  .prompt-sep   { color: #a0aec0; }
+  .prompt-path  { color: #63b3ed; }
+  .prompt-cmd   { color: #e2e8f0; }
+
+  /* Skill card */
+  .skill-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .skill-card:hover {
+    border-color: #68d391;
+    transform: translateY(-3px);
+  }
+
+  /* Category label */
+  .category-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: #90cdf4;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .category-icon {
+    color: #68d391;
+    margin-right: 6px;
+  }
+
+  /* Skill badges */
+  .skill-badge {
+    display: inline-block;
+    background: #2d3748;
+    color: #e2e8f0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid #4a5568;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .skill-badge:hover {
+    background: #68d391;
+    color: #0f1117;
+    border-color: #68d391;
+  }
+</style>

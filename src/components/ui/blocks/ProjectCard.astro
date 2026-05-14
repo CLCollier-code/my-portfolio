@@ -1,0 +1,185 @@
+---
+// ProjectCard.astro
+// Lives in src/components/blocks/ProjectCard.astro
+// Displays projects in a responsive grid with GitHub and live site links.
+// Matches the dark terminal aesthetic of the rest of the portfolio.
+
+const { data } = Astro.props
+const { heading, projects } = data
+---
+
+<section class="projects py-5">
+  <div class="container">
+
+    <!-- Section header -->
+    <div class="section-header mb-5">
+      <p class="prompt mb-1">
+        <span class="prompt-user">chris@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+        <span class="prompt-cmd"> ls ./projects</span>
+      </p>
+      <h2 class="fw-bold">{heading}</h2>
+      <div class="header-line"></div>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="row g-4">
+      {projects.map((project) => (
+        <div class="col-md-6 col-xl-4">
+          <div class="project-card h-100 d-flex flex-column">
+
+            <!-- Card header -->
+            <div class="card-top mb-3">
+              <div class="card-icon mb-3">
+                <span class="folder-icon">📁</span>
+              </div>
+              <h3 class="project-title">{project.title}</h3>
+              <p class="project-desc">{project.description}</p>
+            </div>
+
+            <!-- Tags -->
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              {project.tags.map((tag) => (
+                <span class="tag-badge">{tag}</span>
+              ))}
+            </div>
+
+            <!-- Links — pushed to bottom of card -->
+            <div class="card-links mt-auto d-flex gap-3">
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="card-link"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                  GitHub
+                </a>
+              )}
+              {project.liveUrl && (
+                <a
+                  href="https://lynchburg-site.emcitconsultants.workers.dev/"
+                  target="_blank"
+                  rel="noopener"
+                  class="card-link card-link-live"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                  </svg>
+                  Live Site
+                </a>
+              )}
+            </div>
+
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .projects {
+    background-color: #0f1117;
+    color: #e2e8f0;
+    border-bottom: 1px solid #1e2533;
+  }
+
+  /* Section header */
+  .section-header h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .header-line {
+    width: 48px;
+    height: 3px;
+    background: #68d391;
+    border-radius: 2px;
+    margin-top: 8px;
+  }
+
+  /* Prompt line */
+  .prompt {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user  { color: #68d391; }
+  .prompt-sep   { color: #a0aec0; }
+  .prompt-path  { color: #63b3ed; }
+  .prompt-cmd   { color: #e2e8f0; }
+
+  /* Project card */
+  .project-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-color: #68d391;
+    transform: translateY(-3px);
+  }
+
+  .folder-icon {
+    font-size: 1.5rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Tag badges */
+  .tag-badge {
+    display: inline-block;
+    background: #2d3748;
+    color: #90cdf4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.72rem;
+    padding: 3px 9px;
+    border-radius: 4px;
+    border: 1px solid #4a5568;
+  }
+
+  /* Links */
+  .card-links {
+    border-top: 1px solid #2d3748;
+    padding-top: 1rem;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .card-link:hover {
+    color: #68d391;
+  }
+
+  .card-link-live:hover {
+    color: #90cdf4;
+  }
+</style>

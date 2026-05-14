@@ -6,17 +6,15 @@
 // For now it's hardcoded so you can see the structure working immediately.
 
 import Layout from "../layouts/Layout.astro";
-// import BlockRenderer from "../components/blocks/BlockRenderer.astro";
+import BlockRenderer from "../components/ui/blocks/BlockRenderer.astro";
 
-// Hardcoded for now — Sveltia will replace this data
-// once you wire up Content Collections (next step after foundation).
 const blocks = [
   {
     type: "hero",
-    heading: "Your Name",
+    heading: "Chris Collier",
     subheading: "IT Systems & Infrastructure",
     summary:
-      "Graduating IT professional with hands-on experience in networking, server administration, virtualization, and scripting. CVCC IT Fundamentals & Advanced certified.",
+      "Detail-oriented IT professional and recent graduate with hands-on experience in web development, systems administration, and network fundamentals. Thrives in back-of-house, internal IT environments where technical ownership and problem-solving take center stage.",
     ctaLabel: "View Projects",
     ctaHref: "#projects",
   },
@@ -25,17 +23,37 @@ const blocks = [
     heading: "Skills",
     skills: [
       {
-        category: "Networking",
-        items: ["TCP/IP", "Subnetting", "VLANs", "Cisco IOS"],
+        category: "Languages",
+        items: ["HTML", "CSS", "JavaScript", "Python"],
       },
       {
         category: "Operating Systems",
-        items: ["Linux", "Windows Server", "Active Directory"],
+        items: ["Windows", "macOS", "Linux (Ubuntu)", "Linux (Mint)"],
       },
-      { category: "Scripting", items: ["PowerShell", "Bash", "Python"] },
       {
-        category: "Virtualisation",
-        items: ["VirtualBox", "VMware", "Hyper-V"],
+        category: "Networking",
+        items: ["TCP/IP", "HTTP", "DNS", "Routers", "Switches", "Firewalls"],
+      },
+      {
+        category: "Productivity",
+        items: ["Microsoft 365", "Microsoft Teams", "Google Workspace"],
+      },
+      {
+        category: "Web & DevOps",
+        items: [
+          "Eleventy",
+          "Astro",
+          "Bootstrap",
+          "Sveltia CMS",
+          "Cloudflare",
+          "GitHub",
+          "JAMstack",
+          "CI/CD",
+        ],
+      },
+      {
+        category: "Accessibility",
+        items: ["WCAG", "Navigate360", "Resend"],
       },
     ],
   },
@@ -44,26 +62,47 @@ const blocks = [
     heading: "Projects",
     projects: [
       {
-        title: "JAMstack Counseling Site",
+        title: "JAMstack Website Redesign — Local Counseling Practice",
         description:
-          "Capstone project — designed and built a full JAMstack website for a local therapy practice using Eleventy and Sveltia CMS.",
-        tags: ["Eleventy", "JAMstack", "Sveltia CMS", "Bootstrap"],
-        githubUrl: "https://github.com/yourusername/project",
-        liveUrl: "",
+          "Led architecture, design, and development of a full JAMstack site for a live local client. Built a headless CMS with 15+ modular content blocks so non-technical staff can manage all content without touching code. Implemented per-counselor contact form routing with Cloudflare Turnstile spam filtering and a GitHub-based CI/CD publishing pipeline. Delivered a WCAG-accessible, brand-aligned platform at zero hosting cost.",
+        tags: [
+          "Eleventy",
+          "Bootstrap",
+          "Sveltia CMS",
+          "Cloudflare",
+          "JAMstack",
+          "CI/CD",
+          "WCAG",
+        ],
+        githubUrl: "https://github.com/GCGroup-LYH/lynchburg-site.git",
+        liveUrl: "https://your-live-site-url.com",
       },
     ],
   },
   {
     type: "certBadge",
-    heading: "Certifications",
+    heading: "Education & Certifications",
     certs: [
-      { name: "IT Fundamentals", issuer: "CVCC", year: "2024" },
-      { name: "IT Advanced", issuer: "CVCC", year: "2024" },
+      {
+        name: "Associate of Applied Science — Information Systems Technology",
+        issuer: "Central Virginia Community College",
+        year: "May 2026",
+      },
+      {
+        name: "Career Studies Certificate — Information Systems Technology Fundamentals",
+        issuer: "Central Virginia Community College",
+        year: "2026",
+      },
+      {
+        name: "Career Studies Certificate — Information Systems Technology Plus",
+        issuer: "Central Virginia Community College",
+        year: "2026",
+      },
     ],
   },
 ];
 ---
 
 <Layout title="Home">
-  <!-- blocks coming soon -->
+  {blocks.map((block) => <BlockRenderer block={block} />)}
 </Layout>
