@@ -23,7 +23,7 @@ const { heading, projects } = data
 
     <!-- Projects grid -->
     <div class="row g-4">
-      {projects.map((project) => (
+      {projects.map((project: any) => (
         <div class="col-md-6 col-xl-4">
           <div class="project-card h-100 d-flex flex-column">
 
@@ -38,7 +38,7 @@ const { heading, projects } = data
 
             <!-- Tags -->
             <div class="d-flex flex-wrap gap-2 mb-4">
-              {project.tags.map((tag) => (
+              {project.tags.map((tag: any) => (
                 <span class="tag-badge">{tag}</span>
               ))}
             </div>

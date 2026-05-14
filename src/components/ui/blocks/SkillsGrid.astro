@@ -23,7 +23,7 @@ const { heading, skills } = data
 
     <!-- Skills grid -->
     <div class="row g-4">
-      {skills.map((group) => (
+      {skills.map((group: any) => (
         <div class="col-sm-6 col-lg-3">
           <div class="skill-card h-100">
 
@@ -35,7 +35,7 @@ const { heading, skills } = data
 
             <!-- Skill badges -->
             <div class="d-flex flex-wrap gap-2">
-              {group.items.map((skill) => (
+              {group.items.map((skill: any) => (
                 <span class="skill-badge">{skill}</span>
               ))}
             </div>
