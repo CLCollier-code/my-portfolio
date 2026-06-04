@@ -1,12 +1,26 @@
 ---
+// Layout.astro — your base.njk equivalent
+// Includes: skip to main, focus styles, Open Graph meta, text resizer
+
 import Nav from "../components/ui/Nav.astro";
 import Footer from "../components/ui/Footer.astro";
+import TextResizer from "../components/ui/TextResizer.astro";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
 
 const {
   title,
   description = "IT portfolio of Chris Collier — systems, infrastructure, and web.",
 } = Astro.props;
+
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site ?? "https://chriscollier.dev",
+);
 ---
 
 <!doctype html>
@@ -15,21 +29,92 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} | Your Name — IT Portfolio</title>
+
+    <!-- Open Graph / LinkedIn preview -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta
+      property="og:title"
+      content={`${title} | Chris Collier — IT Portfolio`}
+    />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.png" />
+
+    <title>{title} | Chris Collier — IT Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
   </head>
 
   <body>
+    <!-- Skip to main content — first focusable element on every page -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <Nav />
 
-    <main>
+    <main id="main-content" tabindex="-1">
       <slot />
     </main>
 
     <Footer />
 
+    <!-- Floating text resizer -->
+    <TextResizer />
+
+    <!-- Bootstrap JS bundle -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       is:inline></script>
   </body>
 </html>
+
+<style is:global>
+  /* ── Skip link ───────────────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    background: #68d391;
+    color: #0f1117;
+    padding: 8px 16px;
+    border-radius: 0 0 6px 6px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    transition: top 0.2s ease;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ── Focus styles ────────────────────────────────────────── */
+  /* Visible focus ring for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid #68d391;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Remove default outline only when focus-visible is supported */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* ── Text resizer ────────────────────────────────────────── */
+  html[data-font-size="small"] {
+    font-size: 14px;
+  }
+  html[data-font-size="medium"] {
+    font-size: 16px;
+  }
+  html[data-font-size="large"] {
+    font-size: 19px;
+  }
+
+  /* ── Base ────────────────────────────────────────────────── */
+  body {
+    background-color: #0f1117;
+  }
+</style>

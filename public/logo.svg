@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" width="160" height="40">
+  <!-- Terminal prompt -->
+  <text
+    x="0"
+    y="28"
+    font-family="Courier New, monospace"
+    font-size="13"
+    fill="#68d391"
+    font-weight="600"
+  >CLC</text>
+  
+  <!-- Separator -->
+  <text
+    x="36"
+    y="28"
+    font-family="Courier New, monospace"
+    font-size="13"
+    fill="#4a5568"
+  >//</text>
+  
+  <!-- Name -->
+  <text
+    x="56"
+    y="28"
+    font-family="Courier New, monospace"
+    font-size="13"
+    fill="#e2e8f0"
+    font-weight="400"
+  >Chris Collier</text>
+  
+  <!-- Blinking cursor -->
+  <rect x="148" y="16" width="8" height="14" fill="#68d391" opacity="0.8">
+    <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>

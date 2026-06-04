@@ -1,0 +1,176 @@
+---
+// src/pages/404.astro
+// Astro automatically serves this for any unmatched route.
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="404 — Not Found"
+  description="Page not found — Chris Collier IT Portfolio"
+>
+  <div class="not-found-page">
+    <div class="container">
+      <div class="terminal">
+        <!-- Terminal bar -->
+        <div class="terminal-bar">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="terminal-title">bash</span>
+        </div>
+
+        <!-- Terminal body -->
+        <div class="terminal-body">
+          <p>
+            <span class="t-dim">chris@portfolio</span><span class="t-sep"
+              >:</span
+            ><span class="t-path">~</span><span class="t-sep">$</span>
+            <span class="t-cmd"> cd {Astro.url.pathname}</span>
+          </p>
+          <p class="t-error">
+            bash: cd: {Astro.url.pathname}: No such file or directory
+          </p>
+          <p class="mt-3">
+            <span class="t-dim">chris@portfolio</span><span class="t-sep"
+              >:</span
+            ><span class="t-path">~</span><span class="t-sep">$</span>
+            <span class="t-cmd"> ls</span>
+          </p>
+          <p class="t-output">
+            <a href="/" class="t-link">home</a>
+            <a href="/projects" class="t-link">projects</a>
+            <a href="/education" class="t-link">education</a>
+            <a href="/resume" class="t-link">resume</a>
+          </p>
+          <p class="mt-3">
+            <span class="t-dim">chris@portfolio</span><span class="t-sep"
+              >:</span
+            ><span class="t-path">~</span><span class="t-sep">$</span>
+            <span class="t-cursor">▋</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <p class="hint">Lost? Try one of the links above or head back home.</p>
+        <a href="/" class="btn btn-outline-success mt-2">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .not-found-page {
+    background-color: #0f1117;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+    color: #e2e8f0;
+  }
+
+  .terminal {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: "Courier New", Courier, monospace;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .terminal-bar {
+    background: #2d3748;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot-red {
+    background: #fc8181;
+  }
+  .dot-yellow {
+    background: #f6e05e;
+  }
+  .dot-green {
+    background: #68d391;
+  }
+
+  .terminal-title {
+    margin-left: auto;
+    color: #718096;
+    font-size: 0.75rem;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  .terminal-body {
+    padding: 20px 24px;
+    line-height: 2;
+    font-size: 0.9rem;
+  }
+
+  .terminal-body p {
+    margin: 0;
+  }
+
+  .t-dim {
+    color: #68d391;
+  }
+  .t-sep {
+    color: #4a5568;
+  }
+  .t-path {
+    color: #63b3ed;
+  }
+  .t-cmd {
+    color: #e2e8f0;
+  }
+  .t-error {
+    color: #fc8181;
+  }
+  .t-output {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .t-link {
+    color: #90cdf4;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .t-link:hover {
+    color: #68d391;
+  }
+
+  .t-cursor {
+    display: inline-block;
+    color: #68d391;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .hint {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.85rem;
+    color: #4a5568;
+  }
+</style>

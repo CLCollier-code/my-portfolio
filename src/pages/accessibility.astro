@@ -1,0 +1,196 @@
+---
+// src/pages/accessibility.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Accessibility"
+  description="Accessibility statement for Chris Collier's IT portfolio."
+>
+  <div class="accessibility-page">
+    <div class="container py-5">
+      <div class="page-header mb-5">
+        <p class="prompt mb-1">
+          <span class="prompt-user">chris@portfolio</span><span
+            class="prompt-sep">:</span
+          ><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+          <span class="prompt-cmd"> cat ./accessibility.txt</span>
+        </p>
+        <h1 class="fw-bold text-white">Accessibility Statement</h1>
+        <div class="header-line mt-2"></div>
+      </div>
+
+      <div class="content-card">
+        <p class="body-text">
+          This portfolio is built with accessibility as a core requirement, not
+          an afterthought. It is designed to meet <strong class="text-light"
+            >WCAG 2.1 Level AA</strong
+          > standards.
+        </p>
+
+        <h2 class="section-title mt-4">Features</h2>
+        <ul class="feature-list">
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">Skip to main content</strong> — a keyboard-accessible
+            link appears at the top of every page, allowing screen reader and keyboard
+            users to bypass navigation.
+          </li>
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">Keyboard navigation</strong> — all interactive
+            elements are reachable and operable via keyboard. Focus indicators are
+            clearly visible on every focusable element.
+          </li>
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">Text resizer</strong> — a floating control
+            in the bottom-right corner allows text size to be adjusted to small, medium,
+            or large. Your preference is saved for future visits.
+          </li>
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">Screen reader support</strong> — semantic HTML,
+            ARIA labels, and descriptive alt text are used throughout. Decorative
+            icons are hidden from assistive technology.
+          </li>
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">Colour contrast</strong> — all text meets or
+            exceeds WCAG AA contrast ratio requirements against their backgrounds.
+          </li>
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">Responsive design</strong> — the site is fully
+            functional across all screen sizes and devices.
+          </li>
+          <li>
+            <span class="feature-icon">▸</span>
+            <strong class="text-light">No auto-playing media</strong> — no audio or
+            video plays automatically.
+          </li>
+        </ul>
+
+        <h2 class="section-title mt-4">Known Limitations</h2>
+        <p class="body-text">
+          This site is actively maintained. If you encounter any accessibility
+          barriers not listed here, please get in touch.
+        </p>
+
+        <h2 class="section-title mt-4">Feedback</h2>
+        <p class="body-text">
+          If you experience any difficulty accessing content on this site,
+          please contact me via
+          <a
+            href="https://www.linkedin.com/in/chris-collier-tech/"
+            target="_blank"
+            rel="noopener"
+            class="text-link">LinkedIn</a
+          >. I aim to respond within 2 business days.
+        </p>
+
+        <h2 class="section-title mt-4">Technical Specification</h2>
+        <p class="body-text">
+          Built with <strong class="text-light">Astro</strong> and <strong
+            class="text-light">Bootstrap 5.3</strong
+          >. Tested with keyboard-only navigation and VoiceOver (macOS). Last
+          reviewed: May 2026.
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .accessibility-page {
+    background-color: #0f1117;
+    min-height: 100vh;
+    color: #e2e8f0;
+  }
+
+  .page-header {
+    border-bottom: 1px solid #1e2533;
+    padding-bottom: 1.5rem;
+  }
+
+  .prompt {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user {
+    color: #68d391;
+  }
+  .prompt-sep {
+    color: #a0aec0;
+  }
+  .prompt-path {
+    color: #63b3ed;
+  }
+  .prompt-cmd {
+    color: #e2e8f0;
+  }
+
+  .header-line {
+    width: 48px;
+    height: 3px;
+    background: #68d391;
+    border-radius: 2px;
+  }
+
+  .content-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 2rem 2.5rem;
+    max-width: 760px;
+  }
+
+  .section-title {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #68d391;
+    border-bottom: 1px solid #2d3748;
+    padding-bottom: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .body-text {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .feature-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #a0aec0;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+
+  .feature-icon {
+    color: #68d391;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .text-link {
+    color: #90cdf4;
+    text-decoration: none;
+  }
+
+  .text-link:hover {
+    color: #68d391;
+  }
+</style>

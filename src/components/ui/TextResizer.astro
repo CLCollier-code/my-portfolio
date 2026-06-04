@@ -1,0 +1,213 @@
+---
+// TextResizer.astro
+// Lives in src/components/ui/TextResizer.astro
+// Floating button that controls text size across the site.
+// Persists choice in localStorage so it's remembered on return visits.
+---
+
+<div class="text-resizer" role="group" aria-label="Text size controls">
+  <button
+    class="resizer-toggle"
+    id="resizerToggle"
+    aria-expanded="false"
+    aria-controls="resizerPanel"
+    aria-label="Text size options"
+    title="Adjust text size"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M4 6h16M4 12h16M4 18h7"></path>
+    </svg>
+    <span class="resizer-label">Aa</span>
+  </button>
+
+  <div class="resizer-panel" id="resizerPanel" hidden>
+    <p class="resizer-title">Text Size</p>
+    <div class="resizer-options">
+      <button class="size-btn" data-size="small" aria-label="Small text"
+        >A<span class="sr-only"> (small)</span></button
+      >
+      <button class="size-btn" data-size="medium" aria-label="Medium text"
+        >A<span class="sr-only"> (medium)</span></button
+      >
+      <button class="size-btn active" data-size="large" aria-label="Large text"
+        >A<span class="sr-only"> (large)</span></button
+      >
+    </div>
+  </div>
+</div>
+
+<script>
+  const html = document.documentElement;
+  const toggle = document.getElementById("resizerToggle");
+  const panel = document.getElementById("resizerPanel");
+  const sizeBtns = document.querySelectorAll(".size-btn");
+
+  // Apply saved preference on load
+  const saved = localStorage.getItem("fontSize") ?? "medium";
+  applySize(saved);
+
+  // Toggle panel open/close
+  toggle?.addEventListener("click", () => {
+    const isOpen = panel?.hidden === false;
+    if (panel) panel.hidden = isOpen;
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // Close panel when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!(e.target as HTMLElement)?.closest?.(".text-resizer") && panel) {
+      panel.hidden = true;
+      toggle?.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Size button clicks
+  sizeBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const size = btn.getAttribute("data-size");
+      if (size) {
+        applySize(size);
+        localStorage.setItem("fontSize", size);
+      }
+    });
+  });
+
+  function applySize(size: string) {
+    html.setAttribute("data-font-size", size);
+    sizeBtns.forEach((btn) => {
+      btn.classList.toggle("active", btn.getAttribute("data-size") === size);
+    });
+  }
+</script>
+
+<style>
+  .text-resizer {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  /* Toggle button */
+  .resizer-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 50px;
+    color: #a0aec0;
+    padding: 10px 16px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .resizer-toggle:hover,
+  .resizer-toggle:focus-visible {
+    border-color: #68d391;
+    color: #68d391;
+  }
+
+  .resizer-label {
+    font-weight: 600;
+  }
+
+  /* Panel */
+  .resizer-panel {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 12px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    min-width: 140px;
+  }
+
+  .resizer-title {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.7rem;
+    color: #4a5568;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 10px;
+  }
+
+  .resizer-options {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Size buttons — different sizes to show the scale */
+  .size-btn {
+    background: #2d3748;
+    border: 1px solid #4a5568;
+    border-radius: 6px;
+    color: #a0aec0;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 600;
+  }
+
+  .size-btn:nth-child(1) {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+  .size-btn:nth-child(2) {
+    font-size: 1rem;
+    padding: 4px 10px;
+  }
+  .size-btn:nth-child(3) {
+    font-size: 1.25rem;
+    padding: 4px 12px;
+  }
+
+  .size-btn:hover,
+  .size-btn:focus-visible {
+    border-color: #68d391;
+    color: #68d391;
+  }
+
+  .size-btn.active {
+    background: rgba(104, 211, 145, 0.15);
+    border-color: #68d391;
+    color: #68d391;
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
