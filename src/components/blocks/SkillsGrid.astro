@@ -4,6 +4,18 @@
 // Displays skill categories as headers with badge pills underneath.
 // Matches the dark terminal aesthetic of the hero section.
 
+interface SkillGroup {
+  category: string
+  items: string[]
+}
+
+interface Props {
+  data: {
+    heading: string
+    skills: SkillGroup[]
+  }
+}
+
 const { data } = Astro.props
 const { heading, skills } = data
 ---
@@ -23,7 +35,7 @@ const { heading, skills } = data
 
     <!-- Skills grid -->
     <div class="row g-4">
-      {skills.map((group: any) => (
+      {skills.map((group) => (
         <div class="col-sm-6 col-lg-3">
           <div class="skill-card h-100">
 
@@ -35,7 +47,7 @@ const { heading, skills } = data
 
             <!-- Skill badges -->
             <div class="d-flex flex-wrap gap-2">
-              {group.items.map((skill: any) => (
+              {group.items.map((skill) => (
                 <span class="skill-badge">{skill}</span>
               ))}
             </div>

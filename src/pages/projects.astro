@@ -1,0 +1,74 @@
+---
+// src/pages/projects.astro
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/blocks/ProjectCard.astro";
+
+const data = {
+  projects: [
+    {
+      title: "JAMstack Website Redesign — Local Counseling Practice",
+      description:
+        "Led architecture, design, and development of a full JAMstack site for a live local client. Built a headless CMS with 15+ modular content blocks so non-technical staff can manage all content without touching code. Implemented per-counselor contact form routing with Cloudflare Turnstile spam filtering and a GitHub-based CI/CD publishing pipeline. Delivered a WCAG-accessible, brand-aligned platform at zero hosting cost.",
+      tags: [
+        "Eleventy",
+        "Bootstrap",
+        "Sveltia CMS",
+        "Cloudflare",
+        "JAMstack",
+        "CI/CD",
+        "WCAG",
+      ],
+      githubUrl: "",
+      liveUrl: "https://your-live-site-url.com",
+    },
+  ],
+};
+---
+
+<Layout
+  title="Projects"
+  description="Projects by Chris Collier — JAMstack, web development, and IT infrastructure work."
+>
+  <div class="page-header py-5">
+    <div class="container">
+      <p class="prompt mb-1">
+        <span class="prompt-user">chris@portfolio</span><span class="prompt-sep"
+          >:</span
+        ><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+        <span class="prompt-cmd"> ls ./projects</span>
+      </p>
+      <h1 class="fw-bold text-white">Projects</h1>
+      <p class="text-secondary">
+        Real work, real clients, real problems solved.
+      </p>
+    </div>
+  </div>
+  <ProjectCard data={data} />
+</Layout>
+
+<style>
+  :global(main) {
+    min-height: 100vh;
+    background-color: #0f1117;
+  }
+  .page-header {
+    background-color: #0f1117;
+    border-bottom: 1px solid #1e2533;
+  }
+  .prompt {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user {
+    color: #68d391;
+  }
+  .prompt-sep {
+    color: #a0aec0;
+  }
+  .prompt-path {
+    color: #63b3ed;
+  }
+  .prompt-cmd {
+    color: #e2e8f0;
+  }
+</style>

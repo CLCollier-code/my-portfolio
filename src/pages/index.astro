@@ -1,12 +1,8 @@
 ---
 // src/pages/index.astro — your homepage
-//
-// This is the modular page pattern.
-// In production, 'blocks' will come from Sveltia via Content Collections.
-// For now it's hardcoded so you can see the structure working immediately.
 
 import Layout from "../layouts/Layout.astro";
-import BlockRenderer from "../components/ui/blocks/BlockRenderer.astro";
+import BlockRenderer from "../components/blocks/BlockRenderer.astro";
 
 const blocks = [
   {
@@ -14,7 +10,7 @@ const blocks = [
     heading: "Chris Collier",
     subheading: "IT Systems & Infrastructure",
     summary:
-      "Detail-oriented IT professional and recent graduate with hands-on experience in web development, systems administration, and network fundamentals. Thrives in back-of-house, internal IT environments where technical ownership and problem-solving take center stage.",
+      "Detail-oriented IT professional and recent graduate with hands-on experience in web development, systems administration, and network fundamentals. Thrives in back-of-house, internal IT environments where technical ownership and problem-solving take center stage. Proficient across Windows, macOS, Linux, iOS, and Android platforms.",
     ctaLabel: "View Projects",
     ctaHref: "#projects",
   },
@@ -24,11 +20,11 @@ const blocks = [
     skills: [
       {
         category: "Languages",
-        items: ["HTML", "CSS", "JavaScript", "Python"],
+        items: ["HTML", "CSS", "JavaScript", "SQL", "Java", "Python"],
       },
       {
         category: "Operating Systems",
-        items: ["Windows", "macOS", "Linux (Ubuntu)", "Linux (Mint)"],
+        items: ["Windows", "macOS", "Linux", "Android", "iOS"],
       },
       {
         category: "Networking",
@@ -36,7 +32,16 @@ const blocks = [
       },
       {
         category: "Productivity",
-        items: ["Microsoft 365", "Microsoft Teams", "Google Workspace"],
+        items: [
+          "Word",
+          "Excel",
+          "Access",
+          "Teams",
+          "PowerPoint",
+          "OneNote",
+          "Outlook",
+          "Google Workspace",
+        ],
       },
       {
         category: "Web & DevOps",
@@ -46,14 +51,17 @@ const blocks = [
           "Bootstrap",
           "Sveltia CMS",
           "Cloudflare",
+          "Vercel",
+          "Netlify",
           "GitHub",
           "JAMstack",
           "CI/CD",
+          "MySQL",
         ],
       },
       {
         category: "Accessibility",
-        items: ["WCAG", "Navigate360", "Resend"],
+        items: ["WCAG", "Resend", "Navigate360"],
       },
     ],
   },
@@ -74,7 +82,7 @@ const blocks = [
           "CI/CD",
           "WCAG",
         ],
-        githubUrl: "https://github.com/GCGroup-LYH/lynchburg-site.git",
+        githubUrl: "",
         liveUrl: "https://your-live-site-url.com",
       },
     ],
@@ -99,6 +107,15 @@ const blocks = [
         year: "2026",
       },
     ],
+  },
+  {
+    type: "contact",
+    heading: "Get In Touch",
+    subheading:
+      "Open to back-of-house IT roles in the Lynchburg, VA area. Feel free to connect on LinkedIn or browse my work on GitHub.",
+    linkedinUrl: "https://www.linkedin.com/in/chris-collier-tech/",
+    githubUrl: "https://github.com/CLCollier-code",
+    resumeUrl: "/resume.pdf",
   },
 ];
 ---

@@ -11,13 +11,14 @@ import Hero from "./Hero.astro";
 import ProjectCard from "./ProjectCard.astro";
 import SkillsGrid from "./SkillsGrid.astro";
 import CertBadge from "./CertBadge.astro";
+import Contact from "./Contact.astro";
 
 // The shape of a block coming from Sveltia / your markdown frontmatter.
 // 'type' maps to the block component. Everything else is block-specific data.
 interface Props {
   block: {
     type: string;
-    [key: string]: unknown; // any other fields the block carries
+    [key: string]: any; // any other fields the block carries
   };
 }
 
@@ -31,14 +32,18 @@ const { block } = Astro.props;
 -->{
   block.type === "hero" && <Hero data={block} />
 }
-{block.type === "skillsGrid" && <SkillsGrid data={block} />}
+{block.type === "skillsGrid" && <SkillsGrid data={block as any} />}
 
-{block.type === "projectCard" && <ProjectCard data={block} />}
+{block.type === "projectCard" && <ProjectCard data={block as any} />}
 
-{block.type === "certBadge" && <CertBadge data={block} />}
+{block.type === "certBadge" && <CertBadge data={block as any} />}
+
+{block.type === "contact" && <Contact data={block as any} />}
 
 {
-  !["hero", "projectCard", "skillsGrid", "certBadge"].includes(block.type) && (
+  !["hero", "projectCard", "skillsGrid", "certBadge", "contact"].includes(
+    block.type,
+  ) && (
     <div class="alert alert-warning m-3">
       Unknown block type: <strong>{block.type}</strong>
     </div>

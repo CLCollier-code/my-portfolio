@@ -3,6 +3,19 @@
 // Lives in src/components/blocks/CertBadge.astro
 // Displays certifications in a clean grid matching the portfolio aesthetic.
 
+interface Cert {
+  name: string
+  issuer: string
+  year: string
+}
+
+interface Props {
+  data: {
+    heading?: string
+    certs: Cert[]
+  }
+}
+
 const { data } = Astro.props
 const { heading, certs } = data
 ---
@@ -11,6 +24,7 @@ const { heading, certs } = data
   <div class="container">
 
     <!-- Section header -->
+     {heading && (
     <div class="section-header mb-5">
       <p class="prompt mb-1">
         <span class="prompt-user">chris@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
@@ -19,10 +33,11 @@ const { heading, certs } = data
       <h2 class="fw-bold">{heading}</h2>
       <div class="header-line"></div>
     </div>
+    )}
 
     <!-- Certs grid -->
     <div class="row g-4">
-      {certs.map((cert: any) => (
+      {certs.map((cert) => (
         <div class="col-sm-6 col-lg-4">
           <div class="cert-card h-100 d-flex align-items-start gap-3">
 

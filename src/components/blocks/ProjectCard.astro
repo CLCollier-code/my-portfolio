@@ -4,6 +4,21 @@
 // Displays projects in a responsive grid with GitHub and live site links.
 // Matches the dark terminal aesthetic of the rest of the portfolio.
 
+interface Project {
+  title: string
+  description: string
+  tags: string[]
+  githubUrl: string
+  liveUrl: string
+}
+
+interface Props {
+  data: {
+    heading?: string
+    projects: Project[]
+  }
+}
+
 const { data } = Astro.props
 const { heading, projects } = data
 ---
@@ -12,6 +27,7 @@ const { heading, projects } = data
   <div class="container">
 
     <!-- Section header -->
+    {heading && (
     <div class="section-header mb-5">
       <p class="prompt mb-1">
         <span class="prompt-user">chris@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
@@ -20,10 +36,11 @@ const { heading, projects } = data
       <h2 class="fw-bold">{heading}</h2>
       <div class="header-line"></div>
     </div>
+    )}
 
     <!-- Projects grid -->
     <div class="row g-4">
-      {projects.map((project: any) => (
+      {projects.map((project) => (
         <div class="col-md-6 col-xl-4">
           <div class="project-card h-100 d-flex flex-column">
 
@@ -38,7 +55,7 @@ const { heading, projects } = data
 
             <!-- Tags -->
             <div class="d-flex flex-wrap gap-2 mb-4">
-              {project.tags.map((tag: any) => (
+              {project.tags.map((tag) => (
                 <span class="tag-badge">{tag}</span>
               ))}
             </div>
@@ -60,7 +77,7 @@ const { heading, projects } = data
               )}
               {project.liveUrl && (
                 <a
-                  href="https://lynchburg-site.emcitconsultants.workers.dev/"
+                  href={project.liveUrl}
                   target="_blank"
                   rel="noopener"
                   class="card-link card-link-live"

@@ -1,0 +1,352 @@
+---
+// src/pages/resume.astro
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Resume"
+  description="Resume of Chris Collier — IT Systems & Infrastructure professional."
+>
+  <div class="resume-page">
+    <div class="container py-5">
+      <!-- Page header -->
+      <div class="page-header mb-5">
+        <p class="prompt mb-1">
+          <span class="prompt-user">chris@portfolio</span><span
+            class="prompt-sep">:</span
+          ><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+          <span class="prompt-cmd"> cat ./resume.txt</span>
+        </p>
+        <div
+          class="d-flex align-items-center justify-content-between flex-wrap gap-3"
+        >
+          <div>
+            <h1 class="fw-bold text-white mb-1">Resume</h1>
+            <p class="text-secondary mb-0">Last updated May 2026</p>
+          </div>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            Download PDF ↓
+          </a>
+        </div>
+      </div>
+
+      <!-- Resume content -->
+      <div class="resume-card">
+        <!-- Header -->
+        <div class="resume-section resume-header text-center pb-4 mb-4">
+          <h2 class="text-white fw-bold mb-1">Christopher Collier</h2>
+          <p class="text-secondary mb-0">
+            Lynchburg, VA 24501
+            <span class="sep"> // </span>
+            <a href="mailto:chriscollier.tech@gmail.com" class="resume-link"
+              >chriscollier.tech@gmail.com</a
+            >
+            <span class="sep"> // </span>
+            (434) 329-2564
+          </p>
+          <div class="d-flex justify-content-center gap-3 mt-2">
+            <a
+              href="https://www.linkedin.com/in/chris-collier-tech/"
+              target="_blank"
+              rel="noopener"
+              class="resume-link-small">LinkedIn ↗</a
+            >
+            <a
+              href="https://github.com/CLCollier-code"
+              target="_blank"
+              rel="noopener"
+              class="resume-link-small">GitHub ↗</a
+            >
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="resume-section mb-4">
+          <h3 class="resume-section-title">Summary</h3>
+          <p class="resume-body">
+            Detail-oriented IT professional and recent graduate with hands-on
+            experience in web development, systems administration, and network
+            fundamentals. Adept at building scalable, secure, and accessible
+            solutions. Thrives in back-of-house, internal IT environments where
+            technical ownership and problem-solving take center stage.
+            Proficient across Windows, macOS, Linux, iOS, and Android platforms.
+          </p>
+        </div>
+
+        <!-- Education -->
+        <div class="resume-section mb-4">
+          <h3 class="resume-section-title">Education</h3>
+          <div class="resume-entry">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap gap-1"
+            >
+              <p class="resume-entry-title mb-0">
+                Associate of Applied Science — Information Systems Technology
+                (IT)
+              </p>
+              <span class="resume-date">Graduated May 2026</span>
+            </div>
+            <p class="resume-entry-sub mb-1">
+              Central Virginia Community College
+            </p>
+            <p class="resume-body mb-0">
+              <strong class="text-light">Career Studies Certificates:</strong> Information
+              Systems Technology Fundamentals | Information Systems Technology Plus
+            </p>
+          </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="resume-section mb-4">
+          <h3 class="resume-section-title">Technical Skills</h3>
+          <div class="skills-list">
+            <p class="resume-body mb-1">
+              <strong class="text-light">Languages:</strong> HTML, CSS, JavaScript,
+              SQL, Java, Python
+            </p>
+            <p class="resume-body mb-1">
+              <strong class="text-light">OS:</strong> Windows, macOS, Linux, Android,
+              iOS
+            </p>
+            <p class="resume-body mb-1">
+              <strong class="text-light">Networking:</strong> TCP/IP, HTTP, DNS, routers,
+              switches, firewalls
+            </p>
+            <p class="resume-body mb-1">
+              <strong class="text-light">Productivity:</strong> Microsoft 365 (Word,
+              Excel, Access, Teams, PowerPoint, OneNote, Outlook), Google Workspace
+            </p>
+            <p class="resume-body mb-0">
+              <strong class="text-light">Web & DevOps:</strong> Eleventy, Astro, Bootstrap,
+              Decap/Sveltia CMS, Cloudflare, Vercel, Netlify, GitHub, Resend, JAMstack,
+              CI/CD pipelines, WCAG accessibility, MySQL
+            </p>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="resume-section mb-4">
+          <h3 class="resume-section-title">Projects</h3>
+          <div class="resume-entry">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap gap-1"
+            >
+              <p class="resume-entry-title mb-0">
+                JAMstack Website Redesign — Local Counseling Practice
+              </p>
+              <span class="resume-date">2026</span>
+            </div>
+            <p class="resume-entry-sub mb-2">
+              Capstone Project // Central Virginia Community College
+            </p>
+            <ul class="resume-list">
+              <li>
+                Led architecture, design, and development of a full JAMstack
+                site (Eleventy, Bootstrap, Cloudflare, Sveltia CMS, Resend) for
+                a live local client.
+              </li>
+              <li>
+                Built a headless CMS with 15+ modular content blocks —
+                non-technical staff can manage all site content without touching
+                code.
+              </li>
+              <li>
+                Implemented per-counselor contact form routing with Cloudflare
+                Turnstile spam filtering and a GitHub-based CI/CD publishing
+                pipeline.
+              </li>
+              <li>
+                Delivered a WCAG-accessible, brand-aligned platform at zero
+                hosting cost — scalable, blog-ready, and built for long-term
+                maintainability.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="resume-section mb-4">
+          <h3 class="resume-section-title">Experience</h3>
+
+          <div class="resume-entry mb-4">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap gap-1"
+            >
+              <p class="resume-entry-title mb-0">
+                Front Desk Coordinator — Student Services
+              </p>
+              <span class="resume-date">August 2025 – February 2026</span>
+            </div>
+            <p class="resume-entry-sub mb-2">
+              Central Virginia Community College // Lynchburg, VA
+            </p>
+            <ul class="resume-list">
+              <li>
+                One of a few contacts at the Student Services main desk —
+                triaging walk-ins, scheduling counselor and College Navigator
+                appointments, and supporting prospective student intake using
+                Navigate360 and SIS.
+              </li>
+              <li>
+                Managed multi-line phones and communications via Microsoft
+                Teams; maintained accurate student records across scheduling
+                workflows.
+              </li>
+              <li>
+                Guided prospective students through program options and
+                connected them with appropriate advisors to support enrollment
+                decisions.
+              </li>
+            </ul>
+          </div>
+
+          <div class="resume-entry">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap gap-1"
+            >
+              <p class="resume-entry-title mb-0">Shift Leader / Barista</p>
+              <span class="resume-date">January 2022 – October 2024</span>
+            </div>
+            <p class="resume-entry-sub mb-2">Starbucks // Lynchburg, VA</p>
+            <ul class="resume-list">
+              <li>
+                Managed shift operations — opening/closing duties, task
+                delegation, and team coordination — for a high-volume location.
+              </li>
+              <li>
+                Accountable for health, sanitation, cash-handling, and safety
+                compliance; trained and onboarded new team members.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .resume-page {
+    background-color: #0f1117;
+    min-height: 100vh;
+    color: #e2e8f0;
+  }
+
+  .page-header {
+    border-bottom: 1px solid #1e2533;
+    padding-bottom: 1.5rem;
+  }
+
+  .prompt {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user {
+    color: #68d391;
+  }
+  .prompt-sep {
+    color: #a0aec0;
+  }
+  .prompt-path {
+    color: #63b3ed;
+  }
+  .prompt-cmd {
+    color: #e2e8f0;
+  }
+
+  .resume-card {
+    background: #1a1f2e;
+    border: 1px solid #2d3748;
+    border-radius: 10px;
+    padding: 2.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .resume-header {
+    border-bottom: 1px solid #2d3748;
+  }
+
+  .sep {
+    color: #4a5568;
+    margin: 0 4px;
+  }
+
+  .resume-link {
+    color: #90cdf4;
+    text-decoration: none;
+  }
+
+  .resume-link:hover {
+    color: #68d391;
+  }
+
+  .resume-link-small {
+    font-size: 0.8rem;
+    color: #68d391;
+    text-decoration: none;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  .resume-link-small:hover {
+    color: #90cdf4;
+  }
+
+  .resume-section-title {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #68d391;
+    border-bottom: 1px solid #2d3748;
+    padding-bottom: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .resume-entry-title {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.95rem;
+  }
+
+  .resume-entry-sub {
+    font-size: 0.85rem;
+    color: #90cdf4;
+    font-style: italic;
+  }
+
+  .resume-date {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.78rem;
+    color: #4a5568;
+    white-space: nowrap;
+  }
+
+  .resume-body {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    line-height: 1.7;
+  }
+
+  .resume-list {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .resume-list li {
+    margin-bottom: 4px;
+  }
+
+  .resume-list li::marker {
+    color: #68d391;
+  }
+</style>

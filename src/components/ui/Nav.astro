@@ -1,8 +1,8 @@
 ---
 // Nav.astro — shared navigation
 // Lives in src/components/ui/Nav.astro
-// Uses anchor links for single-page navigation for now.
-// Can be updated to full page links once /about and /projects pages are built.
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header>
@@ -31,24 +31,44 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
+            <a
+              class={`nav-link ${currentPath === "/" ? "active" : ""}`}
+              aria-current={currentPath === "/" ? "page" : undefined}
+              href="/">Home</a
+            >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
+            <a
+              class={`nav-link ${currentPath === "/projects" ? "active" : ""}`}
+              aria-current={currentPath === "/projects" ? "page" : undefined}
+              href="/projects">Projects</a
+            >
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#certifications">Education</a>
+            <a
+              class={`nav-link ${currentPath === "/education" ? "active" : ""}`}
+              aria-current={currentPath === "/education" ? "page" : undefined}
+              href="/education">Education</a
+            >
           </li>
 
-          <!-- Resume opens as PDF in a new tab -->
+          <li class="nav-item">
+            <a
+              class={`nav-link ${currentPath === "/resume" ? "active" : ""}`}
+              aria-current={currentPath === "/resume" ? "page" : undefined}
+              href="/resume">Resume</a
+            >
+          </li>
+
+          <!-- LinkedIn -->
           <li class="nav-item ms-lg-2">
             <a
-              class="btn btn-outline-primary btn-sm"
-              href="/resume.pdf"
+              href="https://www.linkedin.com/in/chris-collier-tech/"
               target="_blank"
-              rel="noopener">Resume ↗</a
+              rel="noopener"
+              class="btn btn-outline-primary btn-sm">LinkedIn ↗</a
             >
           </li>
         </ul>

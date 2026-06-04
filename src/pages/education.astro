@@ -1,0 +1,73 @@
+---
+// src/pages/education.astro
+import Layout from "../layouts/Layout.astro";
+import CertBadge from "../components/blocks/CertBadge.astro";
+
+const data = {
+  certs: [
+    {
+      name: "Associate of Applied Science — Information Systems Technology",
+      issuer: "Central Virginia Community College",
+      year: "May 2026",
+    },
+    {
+      name: "Career Studies Certificate — Information Systems Technology Fundamentals",
+      issuer: "Central Virginia Community College",
+      year: "2026",
+    },
+    {
+      name: "Career Studies Certificate — Information Systems Technology Plus",
+      issuer: "Central Virginia Community College",
+      year: "2026",
+    },
+  ],
+};
+---
+
+<Layout
+  title="Education"
+  description="Education and certifications — Chris Collier, CVCC Information Systems Technology."
+>
+  <div class="page-header py-5">
+    <div class="container">
+      <p class="prompt mb-1">
+        <span class="prompt-user">chris@portfolio</span><span class="prompt-sep"
+          >:</span
+        ><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+        <span class="prompt-cmd"> cat ./education.txt</span>
+      </p>
+      <h1 class="fw-bold text-white">Education</h1>
+      <p class="text-secondary">
+        Credentials from Central Virginia Community College.
+      </p>
+    </div>
+  </div>
+  <CertBadge data={data} />
+</Layout>
+
+<style>
+  :global(main) {
+    min-height: 100vh;
+    background-color: #0f1117;
+  }
+  .page-header {
+    background-color: #0f1117;
+    border-bottom: 1px solid #1e2533;
+  }
+  .prompt {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.85rem;
+  }
+  .prompt-user {
+    color: #68d391;
+  }
+  .prompt-sep {
+    color: #a0aec0;
+  }
+  .prompt-path {
+    color: #63b3ed;
+  }
+  .prompt-cmd {
+    color: #e2e8f0;
+  }
+</style>
