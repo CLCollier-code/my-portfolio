@@ -7,12 +7,12 @@ const { data } = Astro.props;
 const { heading, subheading, summary, ctaLabel, ctaHref } = data;
 ---
 
-<section class="hero py-5">
+<section class="hero py-5" aria-label="Introduction">
   <div class="container">
     <div class="row align-items-center min-vh-75">
       <div class="col-lg-8">
-        <!-- Terminal prompt line -->
-        <p class="prompt mb-2">
+        <!-- Terminal prompt — decorative, hidden from screen readers -->
+        <p class="prompt mb-2" aria-hidden="true">
           <span class="prompt-user">chris@portfolio</span><span
             class="prompt-sep">:</span
           ><span class="prompt-path">~</span><span class="prompt-sep">$</span>
@@ -26,9 +26,10 @@ const { heading, subheading, summary, ctaLabel, ctaHref } = data;
 
         <!-- Role -->
         <p class="role mb-4">
-          <span class="role-bracket">[</span>
+          <!-- Brackets are decorative, hide from screen readers -->
+          <span class="role-bracket" aria-hidden="true">[</span>
           {subheading}
-          <span class="role-bracket">]</span>
+          <span class="role-bracket" aria-hidden="true">]</span>
         </p>
 
         <!-- Summary -->
@@ -44,15 +45,16 @@ const { heading, subheading, summary, ctaLabel, ctaHref } = data;
             target="_blank"
             rel="noopener"
             class="btn btn-outline-secondary btn-lg px-4"
+            aria-label="Download resume PDF (opens in new tab)"
           >
-            Resume <span class="ms-1 small">↗</span>
+            Resume <span class="ms-1 small" aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
 
-      <!-- Terminal card -->
-      <div class="col-lg-4 mt-5 mt-lg-0">
-        <div class="terminal">
+      <!-- Terminal status card — decorative, hidden from screen readers -->
+      <div class="col-lg-4 mt-5 mt-lg-0" aria-hidden="true">
+        <div class="terminal" role="presentation">
           <div class="terminal-bar">
             <span class="dot dot-red"></span>
             <span class="dot dot-yellow"></span>

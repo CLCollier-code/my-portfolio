@@ -6,12 +6,21 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+  <nav
+    class="navbar navbar-expand-lg bg-body-tertiary border-bottom"
+    aria-label="Main navigation"
+  >
     <div class="container">
       <!-- Brand -->
-      <a class="navbar-brand fw-semibold" href="/">
+      <a
+        class="navbar-brand fw-semibold"
+        href="/"
+        aria-label="Chris Collier — IT Portfolio home"
+      >
         Chris Collier
-        <span class="text-muted fw-normal fs-6 ms-1">IT Portfolio</span>
+        <span class="text-muted fw-normal fs-6 ms-1" aria-hidden="true"
+          >IT Portfolio</span
+        >
       </a>
 
       <!-- Mobile toggle -->
@@ -22,7 +31,7 @@ const currentPath = Astro.url.pathname;
         data-bs-target="#mainNav"
         aria-controls="mainNav"
         aria-expanded="false"
-        aria-label="Toggle navigation"
+        aria-label="Toggle navigation menu"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -68,7 +77,9 @@ const currentPath = Astro.url.pathname;
               href="https://www.linkedin.com/in/chris-collier-tech/"
               target="_blank"
               rel="noopener"
-              class="btn btn-outline-primary btn-sm">LinkedIn ↗</a
+              class="btn btn-outline-primary btn-sm"
+              aria-label="LinkedIn profile (opens in new tab)"
+              >LinkedIn <span aria-hidden="true">↗</span></a
             >
           </li>
         </ul>
