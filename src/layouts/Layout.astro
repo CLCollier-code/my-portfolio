@@ -40,6 +40,16 @@ const canonicalURL = new URL(
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/og-image.png" />
 
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta
+      name="twitter:title"
+      content={`${title} | Chris Collier — IT Portfolio`}
+    />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/og-image.png" />
+
     <title>{title} | Chris Collier — IT Portfolio</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
